@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- styling for the test results -->
+    <link rel="stylesheet" href="./mocha/mocha.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.0/mocha.min.css" /> -->
+    <script type="importmap">
+      {
+        "imports": {
+          "readable-stream": "./readable-stream/index.js",
+          "ieee754": "./ieee754.js",
+          "buffer": "./buffer.js",
+          "base64js": "./base64.js",
+          "eventemitter3": "./eventemitter3.js",
+          "fs": "./zenfs-core/dist/index.js",
+          "node:fs": "./zenfs-core/dist/index.js",
+          "chai": "./chai/chai.js",
+          "utilium": "./utilium/dist/index.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- container that will display test results -->
+    <div id="mocha"></div>
+
+    <!-- mocha (test runner) -->
+    <script src="./mocha/mocha.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.0/mocha.min.js"></script> -->
+
+    <script type="module">
+      import chai from "chai";
+      import * as fs from "fs";
+      import buffer from 'buffer'
+      // setup test helpers
+      mocha.setup("bdd");
+      window.fs = fs
+      // your tests here
+      describe("test suite", function () {
+        it("should work", function () {
+          chai.assert(true);
+        });
+      });
+
+      // run tests
+      mocha.run();
+    </script>
+  </body>
+</html>

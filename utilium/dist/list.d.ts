@@ -1,0 +1,33 @@
+import { EventEmitter } from 'eventemitter3';
+export declare class List<T> extends EventEmitter<'update'> implements Set<T>, RelativeIndexable<T> {
+    readonly [Symbol.toStringTag] = "List";
+    constructor(values?: readonly T[] | Iterable<T> | null);
+    protected data: Set<T>;
+    array(): T[];
+    json(): string;
+    toString(): string;
+    set(index: number, value: T): void;
+    deleteAt(index: number): void;
+    at(index: number): T;
+    pop(): T | undefined;
+    push(...items: T[]): number;
+    join(separator?: string): string;
+    splice(start: number, deleteCount: number, ...items: T[]): T[];
+    add(value: T): this;
+    clear(): void;
+    delete(value: T): boolean;
+    union<U>(other: ReadonlySetLike<U>): List<T | U>;
+    intersection<U>(other: ReadonlySetLike<U>): List<T & U>;
+    difference<U>(other: ReadonlySetLike<U>): List<T>;
+    symmetricDifference<U>(other: ReadonlySetLike<U>): List<T | U>;
+    isSubsetOf(other: ReadonlySetLike<unknown>): boolean;
+    isSupersetOf(other: ReadonlySetLike<unknown>): boolean;
+    isDisjointFrom(other: ReadonlySetLike<unknown>): boolean;
+    forEach(callbackfn: (value: T, value2: T, list: List<T>) => void, thisArg?: any): void;
+    has(value: T): boolean;
+    get size(): number;
+    entries(): IterableIterator<[T, T]>;
+    keys(): IterableIterator<T>;
+    values(): IterableIterator<T>;
+    [Symbol.iterator](): IterableIterator<T>;
+}
